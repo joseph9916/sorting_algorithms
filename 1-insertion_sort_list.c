@@ -32,9 +32,9 @@ void swap_node(listint_t *prevnode, listint_t *curnode)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curnode, *present_node = *list, *prevnode, *tempnode;
+	listint_t *curnode, *present_node, *prevnode, *tempnode;
 
-	if (!*list)
+	if (!list)
 		return;
 	present_node = (*list)->next;
 	if (!present_node)
