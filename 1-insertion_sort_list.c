@@ -32,8 +32,11 @@ void swap_node(listint_t *prevnode, listint_t *curnode)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curnode, *present_node = (*list)->next, *prevnode, *tempnode;
+	listint_t *curnode, *present_node = *list, *prevnode, *tempnode;
 
+	if (!*list)
+		return;
+	present_node = (*list)->next;
 	if (!present_node)
 		return;
 	if (!present_node->next)
@@ -42,10 +45,7 @@ void insertion_sort_list(listint_t **list)
 		prevnode = curnode->prev;
 		if (curnode->n < prevnode->n)
 		{
-			prevnode->next = NULL;
-			curnode->prev = NULL;
-			prevnode->prev = curnode;
-			curnode->next = prevnode;
+			swap_node(prevnode, curnode);
 			*list = curnode;
 			print_list(*list);
 		}
