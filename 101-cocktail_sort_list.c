@@ -32,14 +32,15 @@ void swap(listint_t *prevnode, listint_t *curnode)
 
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *beg_list = *list, *end_list = NULL, *curnode;
+	listint_t *beg_list, *end_list = NULL, *curnode;
 	listint_t *nextnode, *tempnode, *prevnode;
 	int i = 0, j;
 
-	if (!beg_list)
+	if (!list)
 		return;
-	if (!beg_list->next)
+	if (!(*list)->next)
 		return;
+	beg_list = *list;
 	curnode = beg_list;
 	while (beg_list != end_list)
 	{
@@ -78,10 +79,9 @@ void cocktail_sort_list(listint_t **list)
 				curnode = prevnode;
 				prevnode = tempnode;
 				if (prevnode == *list)
-				{
 					*list = curnode;
+				if (prevnode == beg_list)
 					beg_list = curnode;
-				}
 				print_list(*list);
 				i++;
 			}
