@@ -53,6 +53,8 @@ void cocktail_sort_list(listint_t **list)
 				tempnode = curnode;
 				curnode = nextnode;
 				nextnode = tempnode;
+				if (beg_list == nextnode)
+					beg_list = curnode;
 				if (nextnode == *list)
 					*list = curnode;
 				print_list(*list);
